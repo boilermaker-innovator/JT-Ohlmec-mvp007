@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser | OHLMEC - Mechanical Fitters & Boilermakers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 5px;
+            background-color: #f0f0f0;
+        }
+        .job-teaser {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid #0066cc;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #0066cc;
+            padding: 10px;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+            animation: shake 0.5s ease-in-out infinite alternate;
+        }
+        .title-location {
+            flex-grow: 1;
+        }
+        .job-title {
+            color: white;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            animation: pulse 1s infinite;
+        }
+        .location {
+            color: #e0e0e0;
+            font-size: 0.9em;
+        }
+        .tabs {
+            display: flex;
+            background-color: #e6e6e6;
+            justify-content: space-around;
+            cursor: pointer;
+        }
+        .tab {
+            padding: 10px 20px;
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .tab:hover, .tab.active {
+            background-color: #d1d1d1;
+        }
+        .content {
+            display: none;
+            padding: 15px;
+            animation: fadeTab 0.5s ease-in-out;
+        }
+        .content.active {
+            display: block;
+        }
+        h2 {
+            color: #0066cc;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .apply-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .apply-button:hover {
+            background-color: #0052a3;
+            animation: bounce 0.3s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(5px); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        @keyframes fadeTab {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="job-teaser">
+        <div class="header">
+            <img src="https://imgur.com/QOt9axm.png" alt="OHLMEC Logo" class="logo">
+            <div class="title-location">
+                <h1 class="job-title">🔧 Mechanical Fitters & Boilermakers 🔩</h1>
+                <div class="location">📍 Kalgoorlie, Western Australia</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'about')">👷‍♂️ About</div>
+            <div class="tab" onclick="openTab(event, 'responsibilities')">🛠️ Responsibilities</div>
+            <div class="tab" onclick="openTab(event, 'requirements')">📋 Requirements</div>
+            <div class="tab" onclick="openTab(event, 'benefits')">🎁 Benefits</div>
+        </div>
+
+        <div id="about" class="content active">
+            <h2>👷‍♂️ About the Role</h2>
+            <p>OHLMEC is seeking experienced Mechanical Fitters and Boilermakers to join our rapidly growing Kalgoorlie operations. We offer a dynamic work environment where safety, quality, culture, and integrity are our core values. ⚙️</p>
+        </div>
+
+        <div id="responsibilities" class="content">
+            <h2>🛠️ Key Responsibilities</h2>
+            <ul>
+                <li>Perform maintenance and fabrication tasks on-site and off-site.</li>
+                <li>Ensure safety and quality standards are met across all projects. ✅</li>
+                <li>Work in a fast-paced environment, adapting to dynamic project needs. ⏱️</li>
+            </ul>
+        </div>
+
+        <div id="requirements" class="content">
+            <h2>📋 Requirements</h2>
+            <ul>
+                <li>Australian Recognised Trade Qualification. 🎓</li>
+                <li>Valid Australian Driver’s Licence and Confined Space, Working at Heights certification. 🪜</li>
+                <li>Boilermakers need Gas Test Atmospheres certification. 🧰</li>
+            </ul>
+        </div>
+
+        <div id="benefits" class="content">
+            <h2>🎁 Benefits</h2>
+            <ul>
+                <li>💰 Attractive remuneration packages.</li>
+                <li>📈 Opportunities for career growth in a growing company.</li>
+                <li>⏰ Flexible roster options available.</li>
+            </ul>
+        </div>
+
+        <a href="https://www.seek.com.au/job/78424467?ref=search-standalone&type=standout&origin=jobTitle#sol=383d6244d9093cd66c7fb0f416ecd31c9e5957f8" class="apply-button" target="_blank">🚀 Apply Now 🚀</a>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, content, tabs;
+            content = document.getElementsByClassName("content");
+            for (i = 0; i < content.length; i++) {
+                content[i].classList.remove("active");
+            }
+            tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .description {
+            background-color: #e9f5ff;
+            border: 1px solid #b8daff;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        textarea, input[type="url"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 300px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+        button, .button {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        button:hover, .button:hover {
+            background-color: #003d82;
+        }
+        #outputContainer {
+            margin-top: 20px;
+        }
+        #teaserOutput {
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .ai-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .ai-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Teaser Creator</h1>
+    
+    <div class="description">
+        <p>Welcome to the Job Teaser Creator. This tool helps you prepare job information for AI-assisted teaser creation. Here's how it works:</p>
+        <ol>
+            <li>Enter the job ad URL and edit the company logo URL if needed</li>
+            <li>Paste the full job ad into the form</li>
+            <li>Review and edit the Job Teaser Template if needed</li>
+            <li>Click "Prepare for AI" to format the content</li>
+            <li>Use the "Copy to Clipboard" button to copy the prepared content</li>
+            <li>Click on ChatGPT or Claude button to open your preferred AI tool</li>
+            <li>Paste the copied content into the AI tool to generate your job teaser</li>
+        </ol>
+    </div>
+
+    <form id="jobTeaserForm">
+        <label for="jobAdUrl">Job Ad URL:</label>
+        <input type="url" id="jobAdUrl" name="jobAdUrl" required>
+
+        <label for="logoUrl">Company Logo URL (Editable):</label>
+        <input type="text" id="logoUrl" name="logoUrl" value="https://imgur.com/QOt9axm.png">
+
+        <label for="fullJobAd">Paste Full Job Ad Here:</label>
+        <textarea id="fullJobAd" name="fullJobAd" required></textarea>
+
+        <label for="jobTeaserTemplate">Job Teaser Template (Editable):</label>
+        <textarea id="jobTeaserTemplate" name="jobTeaserTemplate" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser | COMPANY_NAME - JOB_TITLE</title>
+    <style>
+        /* You can modify the styles here to change the appearance */
+        /* Consider adding styles for interactive elements like tabs, accordions, or carousels */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 5px;
+            background-color: #f0f0f0;
+        }
+        .job-teaser {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid #0066cc;
+        }
+        /* ... (rest of the styles) ... */
+    </style>
+</head>
+<body>
+    <div class="job-teaser">
+        <!-- Consider adding interactive elements like:
+             - Tabs for different sections (About, Responsibilities, Requirements, Benefits)
+             - Accordion for expandable/collapsible sections
+             - Carousel for cycling through key points
+             - Hover effects for engaging interactions
+             - Animated transitions between sections
+        -->
+        <div class="header">
+            <img src="LOGO_URL" alt="COMPANY_NAME Logo" class="logo">
+            <div class="title-location">
+                <h1 class="job-title">JOB_TITLE</h1>
+                <div class="location">📍 LOCATION</div>
+            </div>
+        </div>
+        <div class="content">
+            <h2>About the Role</h2>
+            <p>BRIEF_DESCRIPTION</p>
+            
+            <h2>Key Responsibilities</h2>
+            <ul>
+                <li>RESPONSIBILITY_1</li>
+                <li>RESPONSIBILITY_2</li>
+                <li>RESPONSIBILITY_3</li>
+            </ul>
+            
+            <h2>Requirements</h2>
+            <ul>
+                <li>REQUIREMENT_1</li>
+                <li>REQUIREMENT_2</li>
+                <li>REQUIREMENT_3</li>
+            </ul>
+            
+            <h2>Benefits</h2>
+            <ul>
+                <li>BENEFIT_1</li>
+                <li>BENEFIT_2</li>
+                <li>BENEFIT_3</li>
+            </ul>
+            
+            <a href="JOB_AD_URL" class="apply-button" target="_blank">Apply Now</a>
+        </div>
+    </div>
+
+    <script>
+        // You can add JavaScript here for interactive features
+        // Examples:
+        // - Tab switching logic
+        // - Accordion expand/collapse functionality
+        // - Carousel/slideshow for cycling through content
+        // - Animations for section transitions
+    </script>
+</body>
+</html>
+        </textarea>
+
+        <button type="submit">Prepare for AI</button>
+    </form>
+
+    <div id="outputContainer" style="display:none;">
+        <div class="action-buttons">
+            <button id="copyButton">Copy to Clipboard</button>
+            <a href="https://chat.openai.com" class="ai-button" target="_blank">ChatGPT</a>
+            <a href="https://claude.ai" class="ai-button" target="_blank">Claude</a>
+        </div>
+        <div id="teaserOutput"></div>
+    </div>
+
+    <script>
+    (function() {
+        document.getElementById('jobTeaserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var jobAdUrl = document.getElementById('jobAdUrl').value;
+            var logoUrl = document.getElementById('logoUrl').value;
+            var fullJobAd = document.getElementById('fullJobAd').value;
+            var jobTeaserTemplate = document.getElementById('jobTeaserTemplate').value;
+
+            var jobTeaserContent = `
+Job Teaser Creation Request
+
+Job Ad URL: ${jobAdUrl}
+Company Logo URL: ${logoUrl}
+
+Full Job Ad:
+${fullJobAd}
+
+Job Teaser Template:
+${jobTeaserTemplate}
+
+Instructions for AI:
+1. Analyze the provided job ad and extract key information.
+2. Use the provided HTML template to create an engaging and interactive job teaser.
+3. Replace all placeholder text (in ALL_CAPS) with appropriate content from the job ad.
+4. Implement interactive elements as suggested in the template comments (e.g., tabs, accordion, carousel).
+5. Ensure the following elements are included and properly filled:
+   - COMPANY_NAME
+   - JOB_TITLE
+   - LOCATION
+   - LOGO_URL (use the provided Company Logo URL)
+   - BRIEF_DESCRIPTION (2-3 sentences summarizing the role and company)
+   - RESPONSIBILITY_1, RESPONSIBILITY_2, RESPONSIBILITY_3 (key job responsibilities)
+   - REQUIREMENT_1, REQUIREMENT_2, REQUIREMENT_3 (main job requirements)
+   - BENEFIT_1, BENEFIT_2, BENEFIT_3 (key benefits or perks of the job)
+   - JOB_AD_URL (use the provided Job Ad URL for the "Apply Now" button)
+6. Add appropriate JavaScript for any interactive features you implement.
+7. Keep the content concise, engaging, and tailored to attract qualified candidates.
+8. Maintain the overall structure and styling of the template, but feel free to enhance it.
+9. Ensure the final output is a complete, valid HTML document that can be opened directly in a web browser.
+10. Do not include any explanatory text or markdown outside of the HTML structure.
+
+Your response should start with <!DOCTYPE html> and end with </html>, containing only the HTML code for the interactive job teaser.`;
+
+            document.getElementById('teaserOutput').textContent = jobTeaserContent;
+            document.getElementById('outputContainer').style.display = 'block';
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            var teaserOutput = document.getElementById('teaserOutput');
+            navigator.clipboard.writeText(teaserOutput.textContent).then(function() {
+                alert('Content copied to clipboard! Click on ChatGPT or Claude button to open your preferred AI tool, then paste this content to generate your job teaser.');
+            }).catch(function() {
+                alert('Failed to copy content. Please try selecting and copying manually.');
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
