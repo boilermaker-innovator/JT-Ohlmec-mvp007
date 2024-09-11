@@ -5,32 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Snippets - Job Teaser</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f0f0f0;
+        }
         h1 { color: #333; }
-        form { margin-bottom: 20px; }
-        textarea { width: 100%; height: 150px; margin-bottom: 10px; }
-        #snippetsDisplay { border: 1px solid #ddd; padding: 10px; margin-top: 20px; }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .code-input {
+            flex: 1;
+        }
+        .preview {
+            flex: 1;
+        }
+        textarea { 
+            width: 100%; 
+            height: 300px; 
+            margin-bottom: 10px; 
+            font-family: monospace;
+        }
+        #previewFrame {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
     </style>
 </head>
 <body>
-    <h1>Code Snippets</h1>
+    <h1>Job Teaser Code Snippets</h1>
     <a href="index.html">Back to Job Teaser</a>
     
-    <form id="codeForm">
-        <textarea id="codeInput" placeholder="Paste your code here"></textarea>
-        <button type="submit">Submit Code</button>
-    </form>
-
-    <div id="snippetsDisplay"></div>
+    <div class="container">
+        <div class="code-input">
+            <h2>Paste Your Code</h2>
+            <form id="codeForm">
+                <textarea id="codeInput" placeholder="Paste your job teaser HTML here"></textarea>
+                <button type="submit">Update Preview</button>
+            </form>
+        </div>
+        <div class="preview">
+            <h2>Live Preview</h2>
+            <iframe id="previewFrame"></iframe>
+        </div>
+    </div>
 
     <script>
         document.getElementById('codeForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            var code = document.getElementById('codeInput').value;
-            var display = document.getElementById('snippetsDisplay');
-            display.innerHTML += '<pre>' + code + '</pre>';
-            document.getElementById('codeInput').value = '';
+            updatePreview();
         });
+
+        function updatePreview() {
+            var code = document.getElementById('codeInput').value;
+            var frame = document.getElementById('previewFrame');
+            frame.srcdoc = code;
+        }
+
+        // Initial preview with placeholder content
+        document.getElementById('codeInput').value = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser Preview</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .job-teaser { border: 1px solid #ddd; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="job-teaser">
+        <h1>Sample Job Teaser</h1>
+        <p>Paste your job teaser code to see it rendered here.</p>
+    </div>
+</body>
+</html>
+        `;
+        updatePreview();
     </script>
 </body>
 </html>
