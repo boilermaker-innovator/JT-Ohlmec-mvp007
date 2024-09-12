@@ -16,272 +16,218 @@
         h1, h2 {
             color: #0056b3;
         }
-        .example-teaser, .form-container {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
+        .job-teaser {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid #0066cc;
             margin-bottom: 20px;
         }
-        .form-container {
-            background-color: #f9f9f9;
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #0066cc;
+            padding: 10px;
         }
-        textarea, input[type="url"], input[type="text"] {
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .title-location {
+            flex-grow: 1;
+        }
+        .job-title {
+            color: white;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+        }
+        .location {
+            color: #e0e0e0;
+            font-size: 0.9em;
+        }
+        .tabs {
+            display: flex;
+            background-color: #e6e6e6;
+            justify-content: space-around;
+            cursor: pointer;
+        }
+        .tab {
+            padding: 10px 20px;
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .tab:hover, .tab.active {
+            background-color: #d1d1d1;
+        }
+        .content {
+            display: none;
+            padding: 15px;
+            animation: fadeTab 0.5s ease-in-out;
+        }
+        .content.active {
+            display: block;
+        }
+        .apply-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #0066cc;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .apply-button:hover {
+            background-color: #0052a3;
+        }
+        @keyframes fadeTab {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        textarea, input[type="text"], input[type="url"] {
             width: 100%;
             padding: 8px;
-            margin-top: 5px;
+            margin: 10px 0;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
         }
-        textarea {
-            height: 150px;
-        }
         label {
-            display: block;
-            margin-top: 15px;
             font-weight: bold;
         }
-        button, .button {
-            background-color: #0056b3;
+        button {
+            background-color: #0066cc;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-top: 20px;
-            text-decoration: none;
-            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
         }
-        button:hover, .button:hover {
-            background-color: #003d82;
+        #pasteOption {
+            margin-right: 10px;
         }
-        #outputContainer {
-            margin-top: 20px;
+        #fullJobDetails {
             display: none;
-        }
-        #teaserOutput {
-            background-color: #e9f5ff;
-            border: 1px solid #b8daff;
-            border-radius: 4px;
-            padding: 15px;
-            white-space: pre-wrap;
-        }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .job-teaser {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .job-teaser-header {
-            background-color: #0066cc;
-            color: white;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-        }
-        .job-teaser-logo {
-            width: 60px;
-            height: 60px;
-            margin-right: 15px;
-            object-fit: contain;
-        }
-        .job-teaser-title {
-            font-size: 1.2em;
-            margin: 0;
-        }
-        .job-teaser-location {
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-        .job-teaser-tabs {
-            display: flex;
-            background-color: #f0f0f0;
-        }
-        .job-teaser-tab {
-            padding: 10px 15px;
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-            font-weight: bold;
-        }
-        .job-teaser-tab.active {
-            background-color: #fff;
-            border-bottom: 2px solid #0066cc;
-        }
-        .job-teaser-content {
-            padding: 15px;
-        }
-        .job-teaser-section {
-            display: none;
-        }
-        .job-teaser-section.active {
-            display: block;
-        }
-        .job-teaser-apply {
-            display: block;
-            background-color: #0066cc;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .job-teaser-apply:hover {
-            background-color: #0052a3;
         }
     </style>
 </head>
 <body>
     <h1>Job Teaser Creator</h1>
     
-    <div class="example-teaser">
-        <h2>Example Job Teaser</h2>
-        <div class="job-teaser">
-            <div class="job-teaser-header">
-                <img src="https://imgur.com/QOt9axm.png" alt="OHLMEC Logo" class="job-teaser-logo">
-                <div>
-                    <h3 class="job-teaser-title">Mechanical Fitters & Boilermakers</h3>
-                    <div class="job-teaser-location">Kalgoorlie, Western Australia</div>
-                </div>
+    <div class="job-teaser">
+        <div class="header">
+            <img src="https://imgur.com/QOt9axm.png" alt="OHLMEC Logo" class="logo">
+            <div class="title-location">
+                <h1 class="job-title">Mechanical Fitters & Boilermakers</h1>
+                <div class="location">Kalgoorlie, Western Australia</div>
             </div>
-            <div class="job-teaser-tabs">
-                <button class="job-teaser-tab active" onclick="openTab(event, 'about')">About</button>
-                <button class="job-teaser-tab" onclick="openTab(event, 'requirements')">Requirements</button>
-                <button class="job-teaser-tab" onclick="openTab(event, 'benefits')">Benefits</button>
-            </div>
-            <div class="job-teaser-content">
-                <div id="about" class="job-teaser-section active">
-                    <p>OHLMEC is seeking experienced Mechanical Fitters and Boilermakers to join our rapidly growing Kalgoorlie operations. We offer a dynamic work environment where safety, quality, culture, and integrity are our core values.</p>
-                </div>
-                <div id="requirements" class="job-teaser-section">
-                    <ul>
-                        <li>Australian Recognised Trade Qualification</li>
-                        <li>Valid Australian Driver's Licence</li>
-                        <li>Confined Space and Working at Heights certification</li>
-                    </ul>
-                </div>
-                <div id="benefits" class="job-teaser-section">
-                    <ul>
-                        <li>Attractive remuneration</li>
-                        <li>Career growth opportunities</li>
-                        <li>Flexible roster options</li>
-                    </ul>
-                </div>
-            </div>
-            <a href="https://www.seek.com.au/job/78424467" class="job-teaser-apply" target="_blank">Apply on SEEK</a>
         </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="openTab(event, 'about')">About</div>
+            <div class="tab" onclick="openTab(event, 'responsibilities')">Responsibilities</div>
+            <div class="tab" onclick="openTab(event, 'requirements')">Requirements</div>
+            <div class="tab" onclick="openTab(event, 'benefits')">Benefits</div>
+        </div>
+
+        <div id="about" class="content active">
+            <h2>About the Role</h2>
+            <p>OHLMEC is seeking experienced Mechanical Fitters and Boilermakers to join our rapidly growing Kalgoorlie operations. We offer a dynamic work environment where safety, quality, culture, and integrity are our core values.</p>
+        </div>
+
+        <div id="responsibilities" class="content">
+            <h2>Key Responsibilities</h2>
+            <ul>
+                <li>Perform maintenance and fabrication tasks on-site and off-site.</li>
+                <li>Ensure safety and quality standards are met across all projects.</li>
+                <li>Work in a fast-paced environment, adapting to dynamic project needs.</li>
+            </ul>
+        </div>
+
+        <div id="requirements" class="content">
+            <h2>Requirements</h2>
+            <ul>
+                <li>Australian Recognised Trade Qualification.</li>
+                <li>Valid Australian Driver's Licence and Confined Space, Working at Heights certification.</li>
+                <li>Boilermakers need Gas Test Atmospheres certification.</li>
+            </ul>
+        </div>
+
+        <div id="benefits" class="content">
+            <h2>Benefits</h2>
+            <ul>
+                <li>Attractive remuneration packages.</li>
+                <li>Opportunities for career growth in a growing company.</li>
+                <li>Flexible roster options available.</li>
+            </ul>
+        </div>
+
+        <a href="https://www.seek.com.au/job/78424467" class="apply-button" target="_blank">Apply Now</a>
     </div>
 
-    <div class="form-container">
+    <form id="jobTeaserForm">
         <h2>Create Your Job Teaser</h2>
-        <div class="checkbox-container">
+        <div>
             <input type="checkbox" id="pasteOption">
             <label for="pasteOption">Paste Jobs</label>
         </div>
-        <form id="jobTeaserForm">
-            <textarea id="fullJobDetails" placeholder="Paste full job details here" style="display: none;"></textarea>
+        <textarea id="fullJobDetails" placeholder="Paste full job details here"></textarea>
+        <div id="structuredForm">
             <input type="text" id="companyName" placeholder="Company Name" required>
             <input type="url" id="companyLogo" placeholder="Company Logo URL">
             <input type="text" id="jobTitle" placeholder="Job Title" required>
             <input type="text" id="location" placeholder="Location" required>
-            <textarea id="overview" placeholder="Job Overview" required></textarea>
+            <textarea id="about" placeholder="About the Role" required></textarea>
+            <textarea id="responsibilities" placeholder="Key Responsibilities (one per line)" required></textarea>
             <textarea id="requirements" placeholder="Requirements (one per line)" required></textarea>
             <textarea id="benefits" placeholder="Benefits (one per line)" required></textarea>
             <input type="url" id="applyLink" placeholder="Application Link (SEEK URL)" required>
-            <button type="submit">Generate Job Teaser</button>
-        </form>
-    </div>
-
-    <div id="outputContainer">
-        <h2>Generated Job Teaser</h2>
-        <div id="teaserOutput"></div>
-        <button id="copyButton">Copy to Clipboard</button>
-    </div>
-
-    <a href="code-snippets.html" class="button">View Code Snippets</a>
+        </div>
+        <button type="submit">Generate Job Teaser</button>
+    </form>
 
     <script>
         function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("job-teaser-section");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            var i, content, tabs;
+            content = document.getElementsByClassName("content");
+            for (i = 0; i < content.length; i++) {
+                content[i].classList.remove("active");
             }
-            tablinks = document.getElementsByClassName("job-teaser-tab");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
             }
-            document.getElementById(tabName).className += " active";
-            evt.currentTarget.className += " active";
-        }
-
-        function fillFormWithSampleData() {
-            document.getElementById('companyName').value = "OHLMEC";
-            document.getElementById('companyLogo').value = "https://imgur.com/QOt9axm.png";
-            document.getElementById('jobTitle').value = "Mechanical Fitters and Boilermakers";
-            document.getElementById('location').value = "Kalgoorlie, Western Australia";
-            document.getElementById('overview').value = "OHLMEC is seeking experienced Mechanical Fitters and Boilermakers to join our rapidly growing Kalgoorlie operations. We offer a dynamic work environment where safety, quality, culture, and integrity are our core values.";
-            document.getElementById('requirements').value = "Australian Recognised Trade Qualification\nValid Australian Driver's Licence\nConfined Space and Working at Heights certification";
-            document.getElementById('benefits').value = "Attractive remuneration\nCareer growth opportunities\nFlexible roster options";
-            document.getElementById('applyLink').value = "https://www.seek.com.au/job/78424467";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
 
         document.getElementById('pasteOption').addEventListener('change', function() {
             document.getElementById('fullJobDetails').style.display = this.checked ? 'block' : 'none';
-            const formInputs = document.querySelectorAll('form input:not(#pasteOption), form textarea:not(#fullJobDetails)');
-            formInputs.forEach(input => input.style.display = this.checked ? 'none' : 'block');
+            document.getElementById('structuredForm').style.display = this.checked ? 'none' : 'block';
         });
 
         document.getElementById('jobTeaserForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            let jobTeaserContent = `
-Job Teaser Creation Request
-Job Ad URL: ${document.getElementById('applyLink').value}
-Company Logo URL: ${document.getElementById('companyLogo').value}
-Full Job Ad:
-${document.getElementById('pasteOption').checked ? document.getElementById('fullJobDetails').value : 'Not provided'}
-Job Teaser Template:
-[Your HTML template would go here]
-Instructions for AI:
-1. Analyze the provided job ad and extract key information.
-2. Use the provided HTML template to create an engaging and professional job teaser with tabs.
-3. Replace all placeholder text with appropriate content from the job ad.
-4. Ensure the following elements are included and properly filled:
-   - Company Name
-   - Job Title
-   - Location
-   - Logo URL (use the provided Company Logo URL)
-   - About tab: Brief description summarizing the role and company
-   - Requirements tab: List of main job requirements
-   - Benefits tab: List of key benefits or perks of the job
-   - Application URL (use the provided Job Ad URL for the "Apply on SEEK" button)
-5. Implement the tab functionality using JavaScript.
-6. Keep the content concise and tailored to attract qualified candidates.
-7. Maintain the overall structure and styling of the template.
-8. Ensure the final output is a complete, valid HTML document that can be opened directly in a web browser.
-9. Do not include any explanatory text or markdown outside of the HTML structure.
-Your response should start with <!DOCTYPE html> and end with </html>, containing only the HTML code for the job teaser.`;
-
-            document.getElementById('teaserOutput').textContent = jobTeaserContent;
-            document.getElementById('outputContainer').style.display = 'block';
+            // Here you would add logic to generate the job teaser based on form input
+            alert('Job teaser generated! (Placeholder for actual generation logic)');
         });
-
-        document.getElementById('copyButton').addEventListener('click', function() {
-            var teaserOutput = document.getElementById('teaserOutput');
-            navigator.clipboard.writeText(teaserOutput.textContent).then(function() {
-                alert('Content copied to clipboard!');
-            }).catch(function() {
-                alert('Failed to copy content. Please try selecting and copying manually.');
-            });
-        });
-
-        // Fill form with sample data when the page loads
-        window.addEventListener('load', fillFormWithSampleData);
     </script>
 </body>
 </html>
