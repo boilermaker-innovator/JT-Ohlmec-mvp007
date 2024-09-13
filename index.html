@@ -232,3 +232,49 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Job Teaser Creator</h1>
+    
+    <div class="job-teaser-creator">
+        <input type="text" id="jobTitle" placeholder="Job Title">
+        <input type="text" id="companyName" placeholder="Company Name">
+        <input type="text" id="location" placeholder="Location">
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="about">About</button>
+            <button class="tab-button" data-tab="responsibilities">Responsibilities</button>
+            <button class="tab-button" data-tab="requirements">Requirements</button>
+            <button class="tab-button" data-tab="benefits">Benefits</button>
+        </div>
+
+        <div class="tab-content active" id="about">
+            <textarea id="jobDescription" placeholder="Job Description"></textarea>
+        </div>
+        <div class="tab-content" id="responsibilities">
+            <textarea id="responsibilities" placeholder="Key Responsibilities"></textarea>
+        </div>
+        <div class="tab-content" id="requirements">
+            <textarea id="requirements" placeholder="Job Requirements"></textarea>
+        </div>
+        <div class="tab-content" id="benefits">
+            <textarea id="benefits" placeholder="Benefits"></textarea>
+        </div>
+
+        <button id="generateTeaser">Generate Job Teaser</button>
+    </div>
+
+    <div id="preview">
+        <!-- Preview content will be inserted here -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
