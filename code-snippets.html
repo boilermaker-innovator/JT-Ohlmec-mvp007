@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets - Job Teaser</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #f0f0f0;
+        }
+        h1, h2, h3 { color: #333; }
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .code-input, .preview {
+            flex: 1;
+            min-width: 300px;
+        }
+        textarea { 
+            width: 100%; 
+            height: 300px; 
+            margin-bottom: 10px; 
+            font-family: monospace;
+        }
+        #previewFrame {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #0052a3;
+        }
+        .share-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+        }
+        .share-buttons {
+            margin-top: 10px;
+        }
+        #shareUrl {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Teaser Code Snippets</h1>
+    <a href="index.html">Back to Job Teaser</a>
+    
+    <div class="container">
+        <div class="code-input">
+            <h2>Paste Your Code</h2>
+            <form id="codeForm">
+                <textarea id="codeInput" placeholder="Paste your job teaser HTML here"></textarea>
+                <button type="submit">Update Preview</button>
+            </form>
+        </div>
+        <div class="preview">
+            <h2>Live Preview</h2>
+            <iframe id="previewFrame"></iframe>
+            <div class="share-section">
+                <h3>Share Your Job Teaser</h3>
+                <button id="generateShareLink">Generate Share Link</button>
+                <input type="text" id="shareUrl" readonly placeholder="Your share link will appear here">
+                <div class="share-buttons">
+                    <button onclick="shareOn('facebook')">Share on Facebook</button>
+                    <button onclick="shareOn('twitter')">Share on Twitter</button>
+                    <button onclick="shareOn('linkedin')">Share on LinkedIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentJobTeaserCode = '';
+
+        document.getElementById('codeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            updatePreview();
+        });
+
+        document.getElementById('generateShareLink').addEventListener('click', function() {
+            generateShareableLink();
+        });
+
+        function updatePreview() {
+            currentJobTeaserCode = document.getElementById('codeInput').value;
+            var frame = document.getElementById('previewFrame');
+            frame.srcdoc = currentJobTeaserCode;
+        }
+
+        function generateShareableLink() {
+            const encodedCode = encodeURIComponent(currentJobTeaserCode);
+            const shareableUrl = `${window.location.origin}${window.location.pathname}?code=${encodedCode}`;
+            document.getElementById('shareUrl').value = shareableUrl;
+        }
+
+        function shareOn(platform) {
+            const shareUrl = document.getElementById('shareUrl').value;
+            if (!shareUrl) {
+                alert('Please generate a share link first.');
+                return;
+            }
+
+            let url;
+            const text = encodeURIComponent('Check out this job opportunity!');
+
+            switch(platform) {
+                case 'facebook':
+                    url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+                    break;
+                case 'twitter':
+                    url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${text}`;
+                    break;
+                case 'linkedin':
+                    url = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${text}`;
+                    break;
+            }
+
+            window.open(url, '_blank');
+        }
+
+        // Check if there's a code parameter in the URL and load it
+        const urlParams = new URLSearchParams(window.location.search);
+        const codeParam = urlParams.get('code');
+        if (codeParam) {
+            document.getElementById('codeInput').value = decodeURIComponent(codeParam);
+            updatePreview();
+        } else {
+            // Initial preview with placeholder content
+            document.getElementById('codeInput').value = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser Preview</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .job-teaser { border: 1px solid #ddd; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="job-teaser">
+        <h1>Sample Job Teaser</h1>
+        <p>Paste your job teaser code to see it rendered here.</p>
+    </div>
+</body>
+</html>
+            `;
+            updatePreview();
+        }
+    </script>
+</body>
+</html>

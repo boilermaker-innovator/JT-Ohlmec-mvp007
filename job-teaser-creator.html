@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Job Teaser Creator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; }
+        form { background-color: #f0f0f0; padding: 20px; border-radius: 8px; }
+        textarea, input { width: 100%; margin-bottom: 10px; padding: 8px; }
+        button { background-color: #0066cc; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        #generatedTeaser { margin-top: 20px; border: 1px solid #ddd; padding: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Simple Job Teaser Creator</h1>
+    
+    <form id="jobForm">
+        <input type="text" id="jobTitle" placeholder="Job Title" value="Mechanical Fitters & Boilermakers" required>
+        <input type="text" id="location" placeholder="Location" value="Kalgoorlie, Western Australia" required>
+        <textarea id="jobDescription" placeholder="Job Description" required>OHLMEC is seeking experienced Mechanical Fitters and Boilermakers to join our rapidly growing Kalgoorlie operations. We offer a dynamic work environment where safety, quality, culture, and integrity are our core values.</textarea>
+        <textarea id="requirements" placeholder="Requirements (one per line)" required>Australian Recognised Trade Qualification
+Valid Australian Driver's Licence
+Confined Space, Working at Heights certification</textarea>
+        <textarea id="benefits" placeholder="Benefits (one per line)" required>Attractive remuneration packages
+Opportunities for career growth
+Flexible roster options</textarea>
+        <input type="url" id="applyLink" placeholder="Application Link" value="https://www.seek.com.au/job/78424467" required>
+        <button type="submit">Generate Job Teaser</button>
+    </form>
+
+    <div id="generatedTeaser"></div>
+
+    <script>
+        document.getElementById('jobForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var jobTitle = document.getElementById('jobTitle').value;
+            var location = document.getElementById('location').value;
+            var jobDescription = document.getElementById('jobDescription').value;
+            var requirements = document.getElementById('requirements').value.split('\n').map(item => `<li>${item}</li>`).join('');
+            var benefits = document.getElementById('benefits').value.split('\n').map(item => `<li>${item}</li>`).join('');
+            var applyLink = document.getElementById('applyLink').value;
+
+            var teaserHTML = `
+                <div style="border: 2px solid #0066cc; padding: 20px; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #0066cc;">${jobTitle}</h2>
+                    <p><strong>Location:</strong> ${location}</p>
+                    <h3>About the Role:</h3>
+                    <p>${jobDescription}</p>
+                    <h3>Requirements:</h3>
+                    <ul>${requirements}</ul>
+                    <h3>Benefits:</h3>
+                    <ul>${benefits}</ul>
+                    <a href="${applyLink}" style="background-color: #0066cc; color: white; padding: 10px 20px; text-decoration: none; display: inline-block; margin-top: 20px;">Apply Now</a>
+                </div>
+            `;
+
+            document.getElementById('generatedTeaser').innerHTML = teaserHTML;
+        });
+    </script>
+</body>
+</html>
